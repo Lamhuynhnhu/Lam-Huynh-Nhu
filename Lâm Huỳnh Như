@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+	int n=9;
+//	scanf("%d", &n);
+	int arr[9] = { -2, 1, -3, 4, 1, 2, -1, -5, 3};
+//	for (int i = 0; i < n; i++) {
+//		scanf("%d", &arr[i]);
+//	}
+ 
+	int best = -32768; // cho no gia tri nho nhat
+
+	int start = 0, end = 0, mid = 0;
+	for (int i = 0; i < n; i++) {
+			int sum = 0;
+		for (int j = i; j < n; j++) {
+			if (sum + arr[j] < arr[j]) {
+				sum = arr[j];
+				mid = j;
+			} else {
+				sum += arr[j];
+			}
+			if (best < sum) {
+				best = sum;
+				start = mid;
+				end = j;
+			}
+		}
+	}
+	printf("khoi luong lon nhat %d ", best);
+	printf("tu %d toi %d", start, end);
+	return 0;
+}
